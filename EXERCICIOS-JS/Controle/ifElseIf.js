@@ -14,8 +14,6 @@ const imprimirResultado = function (nota) {
     } else {
         console.log('Nota Inválida');
     };  
-
-    console.log('Fim!');
 };
 
 imprimirResultado(10);
