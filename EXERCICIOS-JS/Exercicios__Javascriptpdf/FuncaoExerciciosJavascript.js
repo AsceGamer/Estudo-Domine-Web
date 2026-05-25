@@ -35,17 +35,39 @@ Crie uma função que recebe os comprimentos dos três lados de um triângulo e 
 ao tamanho de seus lados. (Neste exemplo deve-se abstrair as condições matemáticas de existência de um
 triângulo).*/
 
+const triângulo = function (lado1, lado2, lado3) {
+    if (lado1 === lado2 && lado2 === lado3) {
+        console.log('O triângulo é Equilátero');
+    } else if (lado1 !== lado2 && lado2 !== lado3 && lado1 !== lado3) {
+        console.log('O triângulo é Escaleno');
+    } else {
+        console.log('O triângulo é Isósceles');
+    }
+};
 
+triângulo(1, 2, 3);
+triângulo(4, 3, 3);
+triângulo(4, 4, 4);
 
 /*03) Crie uma função que recebe dois parâmetros, base e expoente, e retorne a base elevada ao expoente.*/
+
+const elevar = function (base, expoente) {
+    console.log(base ** expoente);
+};
+
+elevar(2, 3);
 
 
 
 /*04) Crie uma função que irá receber dois valores, o dividendo e o divisor. A função deverá imprimir o resultado
 e o resto da divisão destes dois valores.*/
 
+const divisão = function (divisor, dividendo) {
+    console.log(dividendo / divisor);
+    console.log(dividendo % divisor);
+};
 
-
+divisão(2, 10);
 
 /*05) Lidar com números em JavaScript pode dar muita dor de cabeça. Você já viu o que acontece quando faz o
 seguinte comando no console: console.log(0.1 + 0.2); O resultado será: 0.30000000000000004. Outra coisa
@@ -53,15 +75,24 @@ importante de observar, é o fato que o ponto é utilizado no lugar da vírgula 
 um exercício simples para mostrar dinheiro sempre da forma correta. Desenvolva uma função JavaScript para
 que ela receba um valor como 0.30000000000000004 e retorne R$0,30 (observe a vírgula e o ponto).*/
 
+let valorexer5 = a => 0.30000000000000004;
 
-
+console.log(valorexer5().toFixed(2).replace('.', ','));
 
 /*06) Elabore duas funções que recebem três parâmetros: capital inicial, taxa de juros e tempo de aplicação. A
 primeira função retornará o montante da aplicação financeira sob o regime de juros simples e a segunda
 retornará o valor da aplicação sob o regime de juros compostos.*/
 
+let jurosSimples = function (capitalInicial, taxaDeJuros, tempoDeAplicacao) {
+    console.log(capitalInicial * (1 + taxaDeJuros * tempoDeAplicacao).toFixed(2));
+};
 
+let jurosCompostos = function (capitalInicial, taxaDeJuros, tempoDeAplicacao) {
+    console.log((capitalInicial * (1 + taxaDeJuros) ** tempoDeAplicacao).toFixed(2));
+};
 
+jurosSimples(1000, 0.1, 2);
+jurosCompostos(1000, 0.1, 2);
 
 /*07) Uma das vantagens da programação é a automatização de tarefas que não gostamos de realizar. Dito isto,
 elabore uma função cujo objetivo é resolver a fórmula de Bhaskara. Para isso, sua função deve receber três
@@ -70,7 +101,20 @@ parâmetros, “ax2”, “bx” e “c”, de tal modo que na equação: 3x² -
 que os resultados sejam iguais. Caso o delta seja negativo, retorne, ao invés do vetor, um string com a frase:
 “Delta é negativo”.*/
 
+let bhaskara = function (a, b, c) {
+    let delta = (b ** 2) - (4 * a * c);
+    if (delta < 0) {
+        return 'Delta é negativo, portanto não existem raízes reais';
+    }else {
+        let x1 = 0;
+        let x2 = 0;
+        x1 = (-b + Math.sqrt(delta)) / (2 * a);
+        x2 = (-b - Math.sqrt(delta)) / (2 * a);
+        return [x1, x2];
+    };
+};
 
+console.log(bhaskara(1, -5, 6));
 
 
 /*08) Pedro joga N jogos de basquete por temporada. Para saber como está ele está progredindo, ele mantém
@@ -85,7 +129,25 @@ String: “10 20 20 8 25 3 0 30 1”
 Retorno: [3, 7] (Significa que ele bateu três vezes seu recorde de melhor pontuação e a pior pontuação
 aconteceu no sétimo jogo.)*/
 
+let pontuacao = [10, 20, 20, 8, 25, 3, 0, 30, 1];
 
+let registroDePontuacao = function (pontuacao) {
+    let recorde = pontuacao[0];
+    let piorJogo = 1;
+    let vezesQueBateuRecorde = 0;
+    for (let i = 1; i < pontuacao.length; i++) {
+        if (pontuacao[i] > recorde) {
+            recorde = pontuacao[i];
+            vezesQueBateuRecorde++;
+        }
+        if (pontuacao[i] < pontuacao[piorJogo - 1]) {
+            piorJogo = i + 1;
+        }
+    }
+    return [vezesQueBateuRecorde, piorJogo];
+};
+
+console.log(registroDePontuacao(pontuacao));
 
 
 /*09) Construa uma função para um sistema de notas de uma instituição que possui a seguinte política de
@@ -97,14 +159,34 @@ arredondamento pois esta nota resulta na reprovação do aluno. Por exemplo, a n
 seja, que evite a reprovação do aluno. No caso de a nota ser 38, o arredondamento é possível pois atingirá 40
 e o aluno será aprovado.*/
 
+let sistemaDeNotas = function (notas) {
+    if (notas < 38 && notas >= 0) {
+        return `Aluno Reprovado ${notas}`;
+    }else if (notas >= 38 && notas < 40) {
+        return 'Aluno Aprovado 40';
+    }else if (notas >= 40 && notas < 100) {
+        return `Aluno Aprovado ${notas}`;
+    }else{
+        return 'Nota inválida';
+    };
+};
 
+console.log(sistemaDeNotas(29));
+console.log(sistemaDeNotas(38));
+console.log(sistemaDeNotas(84));
+console.log(sistemaDeNotas(101));
 
 
 /*10) Crie uma função que verifica se um número inteiro passado como parêmetro é divisível por 3 e retorne true
 ou false.*/
 
+let divisivelPor3 = function (numero) {
+    return numero % 3 === 0;
+};
 
-
+console.log(divisivelPor3(15));
+console.log(divisivelPor3(10));
+console.log(divisivelPor3(-15));
 
 /*11) As regras para o cálculo dos anos bissextos são as seguintes:
 De 4 em 4 anos é ano bissexto;
