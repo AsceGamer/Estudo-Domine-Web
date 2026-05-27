@@ -196,26 +196,82 @@ Prevalecem as últimas regras sobre as primeiras.
 Partindo daí elabore uma função que recebe um ano e calcula se ele é ano bissexto, imprimindo no console a
 mensagem e retornando true ou false.*/
 
+let anoBissexto = function (ano) {
+    if (ano % 400 === 0) {
+        return `${ano} é um ano bissexto.`;
+    } else if (ano % 100 === 0) {
+        return `${ano} não é um ano bissexto.`;
+    } else if (ano % 4 === 0) {
+        return `${ano} é um ano bissexto.`;
+    } else {
+        return `${ano} não é um ano bissexto.`;
+    }
+};
 
+console.log(anoBissexto(1990));
+console.log(anoBissexto(2020));
+console.log(anoBissexto(1900));
+console.log(anoBissexto(2000));
 
 
 /*12) Faça um algoritmo que calcule o fatorial de um número.*/
 
+function calcularFatorial(numero) {
+    if (numero < 0) return "Não existe fatorial de número negativo";
+    
+    let resultado = 1;
+    for (let i = numero; i > 1; i--) {
+        resultado *= i;
+    }
+    return resultado;
+}
 
+console.log(calcularFatorial(5));
 
 
 /*13) Crie um programa que exibe se um dia é dia útil, fim de semana ou dia inválido dado o número referente ao
 dia. Considere que domingo é o dia 1 e sábado é o dia 7. Utilize a estrutura Switch.*/
 
+const diaDaSemana = function (dia) {
+    switch (dia) {
+        case 6: case 2: case 3: case 4: case 5:
+            console.log('Dia útil');
+            break;
+        case 1: case 7:
+            console.log('Fim de semana');
+            break;
+        default:
+            console.log('Dia inválido');
+    };
+};
 
-
+diaDaSemana(1);
 
 /*14) Crie uma estrutura condicional switch que receba uma string com o nome de uma fruta e que possua três
 casos: Caso maçã, retorne no console: “Não vendemos esta fruta aqui”. Caso kiwi, retorne: “Estamos com
 escassez de kiwis”. Caso melancia, retorne: “Aqui está, são 3 reais o quilo”. Teste com estas três opções .Crie
 também um default, que retornará uma mensagem de erro no console.*/
 
+const frutas = function (fruta) {
+    switch (fruta) {
+        case 'maçã':
+            console.log(`Não vendemos esta ${fruta} aqui.`);
+            break;
+        case 'kiwi':
+            console.log(`Estamos com escassez de ${fruta}.`);
+            break;
+        case 'melancia':
+            console.log(`Aqui está, são 3 reais o quilo.`);
+            break;
+        default:
+            console.log('Fruta inválida.');
+    };
+};
 
+frutas('maçã');
+frutas('kiwi');
+frutas('melancia');
+frutas('alcatra');
 
 
 /*15) Um homem decidiu ir à uma revenda comprar um carro. Ele deseja comprar um carro hatch, e a revenda
@@ -224,7 +280,24 @@ comprador queira o hatch, retorne: “Compra efetuada com sucesso”. Nas outras
 que não prefere este modelo?”. Caso seja especificado um modelo que não está disponível, retorne no console:
 “Não trabalhamos com este tipo de automóvel aqui”.*/
 
+const comprarCarro = function (carro) {
+    switch (carro) {
+        case 'hatch':
+            console.log(`Compra efetuada com sucesso.`);
+            break;
+        case 'sedans': case 'motocicletas': case 'caminhonetes':
+            console.log(`Tem certeza que não prefere este modelo?`);
+            break;
+        default:
+            console.log(`Não trabalhamos com este ${carro} de automóvel aqui`);
+    };
+};
 
+comprarCarro('hatch');
+comprarCarro('sedans');
+comprarCarro('motocicletas');
+comprarCarro('caminhonetes');
+comprarCarro('teste');
 
 
 /*16) Utilizando a estrutura do Switch faça um programa que simule uma calculadora básicaO programa recebe
@@ -232,8 +305,29 @@ como parâmetros dois valores numéricos e uma string referente à operação e 
 numéricos na ordem que foram inseridos. Por exemplo: calculadora (2, ‘+’, 3). A função efetuará a soma de 2 e
 3. Dica: Os sinais das operações são: ‘+’. ‘-’, ‘*’ e ‘/’. Crie um caso default para operações inválidas.*/
 
+const calculadoraBásica = function (a, b, operacao) {
+    switch (operacao) {
+        case '+': case 'soma':
+            console.log("O resultado da soma é: " + (a + b));
+            break;
+        case '-': case 'subtração':
+            console.log("O resultado da subtração é: " + (a - b));
+            break;
+        case '*': case 'multiplicação':
+            console.log("O resultado da multiplicação é: " + (a * b));
+            break;
+        case '/': case 'divisão':
+            console.log("O resultado da divisão é: " + (a / b));
+            break;
+        default:
+            console.log(`Operação inválida.`);
+    };
+};
 
-
+calculadoraBásica(10, 5, '+');
+calculadoraBásica(10, 5, 'divisão');
+calculadoraBásica(10, 5, '-');
+calculadoraBásica(10, 5, 'teste');
 
 /*17) Um funcionário irá receber um aumento de acordo com o seu plano de
 trabalho, de acordo com a tabela abaixo:
@@ -244,13 +338,76 @@ C 20%
 Faça uma função que leia o plano de trabalho e o salário atual de um funcionário e calcula e imprime o seu
 novo salário. Use a estrutura switch e faça um caso default que indique que o plano é inválido.*/
 
+const planoDeTrabalho = function (salario, aumento) {
+    switch (aumento) {
+        case 'A': case 'a':
+            console.log("Seu novo salário é: " + (salario * 1.1).toFixed(2) + " Aumento de 10%");
+            break;
+        case 'B': case 'b':
+            console.log("Seu novo salário é: " + (salario * 1.15).toFixed(2) + " Aumento de 15%");
+            break;
+        case 'C': case 'c':
+            console.log("Seu novo salário é: " + (salario * 1.2).toFixed(2) + " Aumento de 20%");
+            break;
+        default:
+            console.log(`plano é inválido.`);
+    };
+};
 
+planoDeTrabalho(2100, 'A');
+planoDeTrabalho(2100, 'b');
+planoDeTrabalho(2100, 'C');
+planoDeTrabalho(2100, 'Teste');
 
 
 /*18) Faça um programa que leia um número entre 0 e 10, e escreva este número por extenso. Use o comando
 switch. Crie um case default que escreva ‘Número fora do intervalo.’*/
 
+const leiaNumero = function (a) {
+    switch (a) {
+        case 1: case '1':
+            console.log(`O seu número ${a} por extenso é: um`);
+            break;
+        case 2: case '2':
+            console.log(`O seu número ${a} por extenso é: dois`);
+            break;
+        case 3: case '3':
+            console.log(`O seu número ${a} por extenso é: três`);
+            break;
+        case 4: case '4':
+            console.log(`O seu número ${a} por extenso é: quatro`);
+            break;
+        case 5: case '5':
+            console.log(`O seu número ${a} por extenso é: cinco`);
+            break;
+        case 6: case '6':
+            console.log(`O seu número ${a} por extenso é: seis`);
+            break;
+        case 7: case '7':
+            console.log(`O seu número ${a} por extenso é: sete`);
+            break;
+        case 8: case '8':
+            console.log(`O seu número ${a} por extenso é: oito`);
+            break;
+        case 9: case '9':
+            console.log(`O seu número ${a} por extenso é: nove`);
+            break;
+        case 10: case '10':
+            console.log(`O seu número ${a} por extenso é: dez`);
+            break;
+        case 0: case '0':
+            console.log(`O seu número ${a} por extenso é: zero`);
+            break;
+        default:
+            console.log(`Número fora do intervalo.`);
+    };
+};
 
+leiaNumero(1);
+leiaNumero("5");
+leiaNumero(0);
+leiaNumero("10");
+leiaNumero(1000);
 
 
 
@@ -266,14 +423,82 @@ Implemente uma função que receba como parâmetros o código do item pedido, a 
 a ser pago por aquele lanche. Considere que a cada execução somente será calculado um item. Use o
 comando switch. Crie um caso default para produto não existente.*/
 
+const lanchonetecardapio = function (item, quantidade) {
+    switch (item) {
+        case 100: case '100': case "Cachorro Quente": case "cachorroQuente":
+            valor = quantidade * 3;
+            console.log(`O valor a ser pago pelo ${quantidade} Cachorro Quente(s) é: R$ ${(valor).toFixed(2)}`);
+            break;
+        case 200: case '200': case "Hambúrguer Simples": case "hambúrguerSimples":
+            valor = quantidade * 4;
+            console.log(`O valor a ser pago pelo ${quantidade} Hambúrguer Simples(s) é: R$ ${(valor).toFixed(2)}`);
+            break;
+        case 300: case '300': case "Cheeseburguer": case "cheeseburguer":
+            valor = quantidade * 5.5;
+            console.log(`O valor a ser pago pelo ${quantidade} Cheeseburguer(s) é: R$ ${(valor).toFixed(2)}`);
+            break;
+        case 400: case '400': case "Bauru": case "bauru":
+            valor = quantidade * 7.5;
+            console.log(`O valor a ser pago pelo ${quantidade} Bauru(s) é: R$ ${(valor).toFixed(2)}`);
+            break;
+        case 500: case '500': case "Refrigerante": case "refrigerante":
+            valor = quantidade * 3.5;
+            console.log(`O valor a ser pago pelo ${quantidade} Refrigerante(s) é: R$ ${(valor).toFixed(2)}`);
+            break;
+        case 600: case '600': case "Suco": case "suco":
+            valor = quantidade * 2.8;
+            console.log(`O valor a ser pago pelo ${quantidade} Suco(s) é: R$ ${(valor).toFixed(2)}`);
+            break;
+        default:
+            console.log(`Não existe este item no cardápio.`);
+    };
+};
 
-
+lanchonetecardapio(100, 2);
+lanchonetecardapio(200, 5);
+lanchonetecardapio(300, 7);
+lanchonetecardapio(400, 10);
+lanchonetecardapio(500, 20);
+lanchonetecardapio(600, 8);
+lanchonetecardapio(1000, 20);
 
 /*20) Crie um programa para informar quais e quantas notas são necessárias para entregar o mínimo de cédulas
 para um determinado valor informado pelo usuário considerando notas de R$ 100, R$ 50, R$ 10 e R$ 5 e R$ 1.
 Seu programa deve mostrar apenas as notas utilizadas. Por exemplo, ao solicitar R$18, o programa deve
 informar apenas a seguinte informação (note que não foram exibidas informações sobre as demais cédulas): 1
 nota(s) de R$ 10. 1 nota(s) de R$ 5. 3 nota(s) de R$ 1.*/
+
+const quantasnotas = function (valor) {
+    let notas = { 100: 0, 50: 0, 10: 0, 5: 0, 1: 0 };
+    let resto = valor;
+
+    while (resto > 0) {
+        if (resto >= 100) {
+            notas[100] = Math.floor(resto / 100);
+            resto %= 100;
+        } else if (resto >= 50) {
+            notas[50] = Math.floor(resto / 50);
+            resto %= 50;
+        } else if (resto >= 10) {
+            notas[10] = Math.floor(resto / 10);
+            resto %= 10;
+        } else if (resto >= 5) {
+            notas[5] = Math.floor(resto / 5);
+            resto %= 5;
+        } else {
+            notas[1] = resto;
+            resto = 0;
+        }
+    };
+
+    for (let nota in notas) {
+        if (notas[nota] > 0) {
+            console.log(`${notas[nota]} nota(s) de R$ ${parseInt(nota).toFixed(2)}`);
+        };
+    };
+};
+
+quantasnotas(18);
 
 
 
@@ -283,8 +508,25 @@ considerando que todos pagam R$ 100 mais um adicional conforme a seguinte tabela
 de 10 anos pagam R$80; 2) conveniados com idade entre 10 e 30 anos pagam R$50; 3) conveniados com
 idade acima de 30 e até 60 anos pagam R$ 95; e 4) conveniados acima de 60 anos pagam R$130*/
 
+const planoSaude = function (idade) {
+    if (idade >= 0 && idade < 10) {
+        console.log(`O valor a ser pago pelo plano de saúde é: R$ ${(100 + 80).toFixed(2)}`);
+    } else if (idade >= 10 && idade <= 30) {
+        console.log(`O valor a ser pago pelo plano de saúde é: R$ ${(100 + 50).toFixed(2)}`);
+    } else if (idade > 30 && idade <= 60) {
+        console.log(`O valor a ser pago pelo plano de saúde é: R$ ${(100 + 95).toFixed(2)}`);
+    } else if (idade > 60) {
+        console.log(`O valor a ser pago pelo plano de saúde é: R$ ${(100 + 130).toFixed(2)}`);
+    } else {
+        console.log(`Idade inválida.`);
+    };
+};
 
-
+planoSaude(5);
+planoSaude(18);
+planoSaude(50);
+planoSaude(80);
+planoSaude(-5);
 
 /*22) Criar uma função para calcular o valor a ser pago de anuidade de uma associação. A função recebe como
 parâmetro um inteiro que representa o mês (1 - janeiro, 2 - fevereiro…) que foi paga e o valor da anuidade. A
@@ -304,52 +546,186 @@ aluno, suas três notas, a média calculada e uma mensagem "APROVADO" se a médi
 
 /*24) Crie um programa que imprima 11 vezes a frase " Hello World!" utilizando uma estrutura de repetição while.*/
 
+const impimirMensagem = function () {
+    for (let i = 0; i < 11; i++) {
+        console.log("Hello World!");
+    };
+};
+
+impimirMensagem();
 
 
 
 /*25) Escrever um programa para exibir os números de 1 até 50 na tela.*/
 
 
+const impimirNumero1a50 = function () {
+    for (let i = 1; i <= 50; i++) {
+        console.log(i);
+    };
+};
 
+impimirNumero1a50();
 
 /*26) Fazer um programa para encontrar todos os pares entre 1 e 100.*/
 
+const impimirNumerosPares = function () {
+    for (let i = 1; i <= 100; i++) {
+        if (i % 2 === 0) {
+            console.log(i);
+        }
+    };
+};
 
+impimirNumerosPares();
 
 
 /*27) Construa uma função que receba como parâmetros as alturas e as taxas de crescimento anuais de duas
 crianças e calcule se existe uma criança menor, caso exista se a criança menor ultrapassará a maior e em
 quantos anos isso acontecerá. Utilize centímetros para as unidades de medida.*/
 
+const alturaCrescimento = function (altura1, altura2, taxaCrescimento1, taxaCrescimento2) {
+    if (altura1 !== altura2) {
+        if (altura1 < altura2 && taxaCrescimento1 > taxaCrescimento2) {
+            alturaMenor = altura1 + taxaCrescimento1;
+            alturaMaior = altura2 + taxaCrescimento2;
+            tempo = 1;
+            while (alturaMenor <= alturaMaior) {
+                alturaMenor += taxaCrescimento1;
+                alturaMaior += taxaCrescimento2;
+                tempo++;
+            };
+            console.log('A criança 1 ultrapassará a maior em ' + tempo + ' anos.');
+            return;
+        } else if (altura1 < altura2 && taxaCrescimento1 < taxaCrescimento2) {
+            alturaMenor = altura2 + taxaCrescimento2;
+            alturaMaior = altura1 + taxaCrescimento1;
+            tempo = 1;
+            while (alturaMenor <= alturaMaior) {
+                alturaMenor += taxaCrescimento2;
+                alturaMaior += taxaCrescimento1;
+                tempo++;
+            };
+            console.log('A criança 2 ultrapassará a maior em ' + tempo + ' anos.');
+            return;
+        } else {
+            console.log('A criança menor não ultrapassará a maior.');
+             return;
+        }
+    } else if (altura1 === altura2 && taxaCrescimento1 !== taxaCrescimento2) {
+        console.log('As crianças têm a mesma altura.');
+        return;
+    }
+};
 
+alturaCrescimento(100, 90, 3, 3);
 
 
 /*28) Ler um vetor de números inteiros e imprimir quantos são pares e quantos são ímpares.*/
+const vetor28 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+let quantidadePares = 0;
+let quantidadeImpares = 0;
 
+const contadorParImpar= function () {
+    for (let i in vetor28) {
+        if (vetor28[i] % 2 === 0) {
+            quantidadePares++;
+        } else {
+            quantidadeImpares++;
+        };
+    };
+    console.log(`Quantidade de números pares: ${quantidadePares}`);
+    console.log(`Quantidade de números ímpares: ${quantidadeImpares}`);
+};
 
+contadorParImpar();
 
 
 /*29) Utilizando a estrutura de repetição for, faça uma função que percorra um vetor e conte quantos números
 deste vetor estão no intervalo [10,20] (repare que o intervalo é fechado, ou seja, inclui o 10 e o 20) e quantos
 deles estão fora do intervalo, escrevendo estas informações.*/
 
+                                /* 
+                                    REFATORAR 
+                                                O
+                                                    CODIGO PARA VERIFICAR SE TEM COMO MELHORAR.
+                                       
+                                                                                            */
 
+
+const vetor29 = [0, 1, 2, 30, 4, 5, 50, 7, 8, 16, 10];
+
+const contadorIntervalo10a20 = function () {
+    for (let i in vetor29) {
+        if (vetor29[i] >= 10 && vetor29[i] <= 20) {
+            console.log(`O número ${vetor29[i]} está no intervalo [10,20].`);
+        } else {
+            console.log(`O número ${vetor29[i]} está fora do intervalo [10,20].`);
+        };
+    };
+};
+
+contadorIntervalo10a20();
 
 
 /*30) Escreva um algoritmo que percorre um vetor de inteiros e defina o maior e menor valor dentro do vetor.*/
 
+const vetor30 = [0, 1, 2, 30, 4, 5, 50, 7, 8, 16, 10];
+let maiorValor = vetor30[0];
+let menorValor = vetor30[0];
 
+const contadorMaioreMenor = function () {
+    for (let i = 0; i < vetor30.length; i++) {
+        if (vetor30[i] > maiorValor) {
+            maiorValor = vetor30[i];
+        } else if (vetor30[i] < menorValor) {
+            menorValor = vetor30[i];
+        };
+    };
+    console.log(`O maior valor do vetor é: ${maiorValor}, e o menor valor do vetor é: ${menorValor}.`);
+};
+
+contadorMaioreMenor();
+
+/* Feito com auxilio do Google. */
+
+const vetor30 = [0, 1, 2, 30, 4, 5, 50, 7, 8, 16, 10];
+let maiorNumero = Math.max(...vetor30);                     // O operador spread (...) é usado para expandir o vetor em elementos individuais, permitindo que a função Math.max()   encontre o maior número.
+console.log(`O maior número é: ${maiorNumero}`);
 
 
 /*31) Escrever um algoritmo que percorre um vetor de inteiros, conta quantos números negativos há nesse vetor
 e imprime a quantidade no console.*/
 
+const vetor31 = [-1, 2, 30, 4, -5, 50, 7, 8, -16, 10, 0];
+let quantidadeNegativos = 0;
 
+const contadorNegativos = function () {
+    for (let i = 0; i < vetor31.length; i++) {
+        if (vetor31[i] < 0) {
+            quantidadeNegativos++;
+        }
+    };
+    console.log(`A quantidade de números negativos no vetor é: ${quantidadeNegativos}.`);
+};
+
+contadorNegativos();
 
 
 /*32) Construir um algoritmo que calcule a média aritmética dos valores de um vetor de inteiros.*/
 
+const vetor32 = [-1, 2, 30, 4, -5, 50, 7, 8, -16, 10, 0];
+let quantidadeTotal = 0;
 
+const contadorMedioVetor = function () {
+    for (let i = 0; i < vetor32.length; i++) {
+        quantidadeTotal += vetor32[i];
+    };
+    const media = quantidadeTotal / vetor32.length;
+    console.log(`A média aritmética dos valores do vetor é: ${media.toFixed(2)}.`);
+};
+
+contadorMedioVetor();
 
 
 /*33) Crie três vetores, chamados vetorInteiro, vetorString e vetorDouble. Cada um destes vetores deverá conter
@@ -357,7 +733,11 @@ quatro valores, sendo o primeiro com valores inteiros, o segundo com strings e o
 Declarados os vetores, utilize a função de união concat() de duas maneiras diferentes para unir os vetores, e
 mostre o resultado no console. Todos os elementos do vetor resultado deverão aparecer no console.*/
 
-
+const vetorInteiro = [1, 2, 30, 4, 5, 50];
+const vetorString = ['a', 'w', 's', 'd', 'q', 'w'];
+const vetorDouble = [-1.5, 2.7, 30.1, 4.3, -5.2, 50.8];
+let vetorUniao = vetorInteiro.concat(vetorString, vetorDouble);
+console.log(vetorUniao);
 
 
 /*34) Construa uma função que receberá duas Strings de tamanhos variados e que retornará True ou False caso
