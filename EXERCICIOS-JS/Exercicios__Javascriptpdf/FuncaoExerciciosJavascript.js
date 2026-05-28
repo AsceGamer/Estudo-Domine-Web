@@ -751,7 +751,21 @@ inteiros: [1, 2, 3, 4, 5]. Você deverá adicionar os valores contidos no vetorA
 e mostrá-los no console. É importante lembrar que o método Push retorna somente o tamanho do Vetor. Ao
 final das operações imprima os vetores no console.*/
 
+const vetorPilha = [1, 2, 3, 4, 5];
+const vetorAdiciona = [6, 7, 8, 9, 10];
+for (let i = 0; i< vetorAdiciona.length; i++){
+    vetorPilha.push(vetorAdiciona[i]);
+};
 
+console.log(vetorPilha);
+console.log(vetorAdiciona);
+
+/* Feito com auxilio do Google. */
+let vetorPilha = [1, 2, 3, 4, 5];
+const vetorAdiciona = [6, 7, 8, 9, 10];
+vetorPilha = [ ...vetorPilha, ...vetorAdiciona ];
+console.log(vetorPilha);
+console.log(vetorAdiciona);
 
 
 /*36) Crie duas funções que recebem dois parâmetros, um vetor com apenas valores numéricos e um número
@@ -759,33 +773,111 @@ inteiro. Faça com que a primeira função retorne outro vetor que será resulta
 elemento pelo número passado como parâmetro. A segunda função fará o mesmo da primeira se e somente se
 o valor do elemento for maior que 5.*/
 
+const vetor361 = [-1, 2, 30, 4, -5];
+const vetor362 = [7, 8, 16, 10, 0];
+let quantidadeTotal = 0;
 
+const funcao1 = function (vetor361, numero) {
+    let vetorResultado = [];
+    for (let i = 0; i < vetor361.length; i++) {
+        vetorResultado.push(vetor361[i] * numero);
+    };
+    console.log(`O vetor resultado da multiplicação de cada elemento pelo número ${numero} é: ${vetorResultado}.`);
+};
+
+const funcao2 = function (vetor362, numero) {
+    let vetorResultado = [];
+    for (let i = 0; i < vetor362.length; i++) {
+        if (vetor362[i] > 5) {
+            vetorResultado.push(vetor362[i] * numero);
+        }
+    };
+    console.log(`O vetor resultado da multiplicação de cada elemento pelo número ${numero} é: ${vetorResultado}.`);
+};
+
+funcao1(vetor361, 2);
+funcao2(vetor362, 2);
 
 
 /*37) Escreva duas funções, uma para progressão aritmética e uma para progressão geométrica que recebam
 como parâmetros um número n (número de termo), a1 (o primeiro termo) e r (a razão) e escreva os n termos ,
 bem como a soma dos elementos.*/
 
+const progressaoAritmetica = function (n, a1, r) {
+    for (let i = 0; i < n; i++) {
+        console.log(a1 + (i * r));
+    };
+    console.log('Soma: ' + (n * (a1 + (a1 + ((n-1)*r))))/2); 
+};
 
+const progressaoGeometrica = function (n, a1, r) {
+    for (let i = 0; i < n; i++) {
+        console.log(a1*(r**i));
+    };
+    console.log('Soma: ' + (a1 * ((r**n)-1))/(r-1));
+};
+
+progressaoAritmetica(10, 10, 15);
+progressaoGeometrica(10, 5, 3);
 
 
 /*38) Escreva uma função que receba dois parâmetros início e fim. Essa função deve imprimir todos os números
 ímpares que estão entre esses valores. Por padrão os valores devem ser 0 para início e 100 para fim. Atente
 para corrigir a ordem dos parâmetros caso a função receba o valor maior antes do menor.*/
 
+const contadorImpares = function (n1 = 0, n2 = 100) {
+    for (let i = n1; i <= n2; i++) {
+        if(n1 >= n2 || n1 < 0 || n2 < 0) {
+            console.log(`O valor de início é maior que o valor de fim, corrigindo a ordem dos parâmetros.`);
+            break;
+        } else if (i % 2 !== 0) {
+            console.log(`Esses são os números ímpares: ${i}`);
+        };
+    };
+};
 
+contadorImpares(0, 50);
 
 
 /*39) Crie uma função que receba dois vetores de igual tamanho e troque seus elementos de modo que o
 primeiro elemento do vetorA passe a ser o primeiro elemento do vetorB e vice versa e assim sucessivamente.
 Faça a troca sem utilizar uma variável auxiliar.*/
 
+let vetorA = [1, 2, 3, 4, 5];
+let vetorB = [6, 7, 8, 9, 10];
 
+const trocarVetores = function (vetorA, vetorB) {
+    for (let i = 0; i < vetorA.length; i++) {
+        [vetorA[i], vetorB[i]] = [vetorB[i], vetorA[i]];
+    }
+    console.log(`Vetor A após troca: ${vetorA}`);
+    console.log(`Vetor B após troca: ${vetorB}`);
+};
+
+trocarVetores(vetorA, vetorB);
 
 
 /*40) Faça uma função que receba como parâmetro um vetor de notas e mostre os conceitos de cada uma de
 modo que de 0,0 a 4,9 seja atribuído o conceito D, de 5,0 a 6,9 seja atribuído o conceito C, de 7,0 a 8,9 o
 conceito B e de 9,0 a 10,0 o conceito A.*/
 
+let notas40 = [0.5, 4, 5.5, 6.5, 7.5, 8, 9.5, 10];
 
+const conceitoNotas = function (notas40) {
+    for (let i = 0; i < notas40.length; i++) {
+        if (notas40[i] >= 0 && notas40[i] <= 4.9) {
+            console.log(`A nota ${notas40[i]} tem o conceito D.`);
+        } else if (notas40[i] >= 5 && notas40[i] <= 6.9) {
+            console.log(`A nota ${notas40[i]} tem o conceito C.`);
+        } else if (notas40[i] >= 7 && notas40[i] <= 8.9) {
+            console.log(`A nota ${notas40[i]} tem o conceito B.`);
+        } else if (notas40[i] >= 9 && notas40[i] <= 10) {
+            console.log(`A nota ${notas40[i]} tem o conceito A.`);
+        } else {
+            console.log(`A nota ${notas40[i]} é inválida.`);
+        };
+    };
 
+};
+
+conceitoNotas(notas40);
