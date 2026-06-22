@@ -3,7 +3,11 @@ Exemplos:
 cumprimentar("Leonardo") // retornará "Olá, Leonardo!" 
 cumprimentar("Maria") // retornará "Olá, Maria!"
 */
+function cumprimentar(nome) {
+    return ` Olá, ${nome}!`;
+};
 
+console.log(cumprimentar('Ygor'));
 
 
 /*02) Escreva uma função que receba a idade de uma pessoa em anos e retorne a mesma idade em dias.
@@ -13,14 +17,24 @@ converterIdadeEmAnosParaDias(25) // retornará 9125
 converterIdadeEmAnosParaDias(70) // retornará 25550
 */
 
+function converterIdadeEmAnosParaDias(idade) {
+    idadeEmDias = idade * 365;
+    return ` numeros de Dias ${idadeEmDias}!`;
+}
 
+console.log(converterIdadeEmAnosParaDias(70));
 
 /*03) Desenvolva uma função que recebe dois parâmetros, um é a quantidade de horas trabalhadas por um funcionário num mês, e o quanto ele recebe por hora. O retorno da função deve ser a string "Salário igual a R$ Х", em que Х é o quanto o funcionário ganhou no mês.
 Exemplos:
 calcularSalario(150, 40.5) // retornará "Salário igual a R$ 6075"
 */
 
+function calcularSalario(horasTrabalhadas, valorPorHoras) {
+    total = horasTrabalhadas * valorPorHoras;
+    return `Salário igual a R$ ${total}`;
+}
 
+console.log(calcularSalario(150, 40.5));
 
 /*04) Crie uma função que recebe um número (de 1 a 12) e retorne o mês correspondente como uma string. Por exemplo, se a entrada for 2, a função deverá retornar "fevereiro", pois este é o 2° mês.
 Exemplos:
@@ -28,7 +42,50 @@ nomeDoMes(1) // retornará "janeiro" nomeDoMes(4)
 nomeDoMes(4) // retornará "abril"
 */
 
+function mesCorrespondente(mes) {
+    switch (mes) {
+        case 1:
+            return "janeiro";
+            break;
+        case 2:
+            return "fevereiro";
+            break;
+        case 3:
+            return "março";
+            break;
+        case 4:
+            return "abril";
+            break;
+        case 5:
+            return "maio";
+            break;
+        case 6:
+            return "junho";
+            break;
+        case 7:
+            return "julho";
+            break;
+        case 8:
+            return "agosto";
+            break;
+        case 9:
+            return "setembro";
+            break;
+        case 10:
+            return "outubro";
+            break;
+        case 11:
+            return "novembro";
+            break;
+        case 12:
+            return "dezembro";
+            break;
+        default:
+            return 'Mês inválido';
+    };
+};
 
+console.log(mesCorrespondente(15));
 
 /*05) Crie uma função que receba dois números e retorne se o primeiro é maior ou igual ao segundo. Exemplos:
 maiorOuIgual(0, 0) // retornará true 
@@ -36,7 +93,17 @@ maiorOuIgual(0, 0) // retornará true
 // maiorOuIgual(5, 1) // retornará false
 */
 
+function compararNumero(numero1, numero2) {
+    if (typeof numero1 !== 'number' || typeof numero2 !== 'number') {
+        return 'Parâmetros inválidos. Ambos os parâmetros devem ser números.';
+    } else if (numero1 >= numero2) {
+        return `O número ${numero1} é maior ou igual a ${numero2} ` + true;
+    } else {
+        return `O número ${numero1} não é maior ou igual a ${numero2} ` + false;
+    }
+}
 
+console.log(compararNumero(15, "16"));
 
 /*06) Escreva uma função que receba um valor booleano ou numérico. Se o parâmetro fornecido for booleano, o retorno da função deverá ser o inverso. Por exemplo, se a entrada for false, retornará true. Se o parâmetro for numérico, o retorno será o número inverso. Por exemplo, se for fornecido 1, o retorno será -1. Se o parâmetro de entrada não for de nenhum dos tipo acima, retorne "booleano ou número esperados, mas o parâmetro é do tipo ...".
 Exemplos:
@@ -45,16 +112,46 @@ inverso("6") // retornará "booleano ou número esperados, mas o parâmetro é d
 inverso("programação") // retornará "booleano ou números esperado, mas o parâmetro é do tipo string"
 */
 
+function verificarValor(valor) {
+    if (typeof valor == 'boolean') {
+        return !valor;
+    } else if (typeof valor == 'number') {
+        return -valor;
+    } else {
+        return "booleano ou número esperados, mas o parâmetro é do tipo " + typeof valor;
+    }
+}
 
+console.log(verificarValor("Teste"));
+console.log(verificarValor(16));
+console.log(verificarValor(true));
+console.log(verificarValor(Object));
 
 /*07) Crie uma função que receba quatro números como parâmetro (numero, minimo, maximo, inclusivo) e retorne se o parâmetro numero (o primeiro) está entre minimo e maximo. Quando o parâmetro inclusivo for true, tenha "entre" como inclusivo, ou seja, considerando se numero é igual a minimo ou a maximo. Caso o parâmetro inclusivo não seja informado, seu valor padrão deverá ser false, portanto, a lógica será exclusiva, não considerando se numero é igual a minimo ou a maximo.
 Exemplos:
 estaEntre(10, 50, 100) // retornará true
 estaEntre(16, 100, 160) // retornará false
-estaEntre(3, 3, 150) // retornará false estaEntre(3, 3, 150, true) // retornará true
+estaEntre(3, 3, 150) // retornará false 
+estaEntre(3, 3, 150, true) // retornará true
 */
 
+function estaEntre(numero, minimo, maximo, inclusivo = false) {
+    if (numero < minimo || numero > maximo) {
+        return false;
+    }else if (inclusivo && (numero === minimo || numero === maximo)) {
+        return true;
+    } else if (numero > minimo && numero < maximo) {
+        return true;
+    } else {
+        return true;
+    }
+};
 
+console.log(estaEntre(10, 50, 100));
+console.log(estaEntre(16, 100, 160));
+console.log(estaEntre(3, 3, 150));
+console.log(estaEntre(3, 3, 150, true));
+console.log(estaEntre(16, 10, 160));
 
 /*08) Desenvolva uma função que recebe dois números inteiros não negativos (maiores ou iguais a zero) e realize a multiplicação deles. Porém, não utilize o operador de mutiplicação.
 Exemplo:
