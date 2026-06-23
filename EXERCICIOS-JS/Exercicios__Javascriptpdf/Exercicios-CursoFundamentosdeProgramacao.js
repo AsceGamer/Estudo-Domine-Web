@@ -184,7 +184,18 @@ repetir("código", 2) // retornará ["código", "código"]
 // repetir(7, 3) // retornará [7, 7, 7]
 */
 
+function repetirTermo(termo, repetir) {
+    let resultado = [];
+    for (let i = 0; i < repetir; i++) {
+        resultado.push(termo);
+    }
+    return resultado;
+};
 
+console.log(repetirTermo(10, 50));
+console.log(repetirTermo(0, 7));
+console.log(repetirTermo("código", 2));
+console.log(repetirTermo(7, 3));
 
 /*10) Elabore uma função que recebe um número como parâmetro e retorne uma string com o símbolo "+" na quantidade especificada no parâmetro.
 Exemplos:
@@ -192,7 +203,18 @@ simboloMais(2) // retornará "++"
 // simboloMais(4) // retornará "++++"
 */
 
+function repetirString(repetir) {
+    let resultado = [];
+    for (let i = 0; i < repetir; i++) {
+        resultado.push("+");
+    }
+    return resultado;
+};
 
+console.log(repetirString(10));
+console.log(repetirString(4));
+console.log(repetirString(2));
+console.log(repetirString(0));
 
 /*11) Crie uma função que receba uma array e retorne o primeiro e o último elemento desse array como um novo
 array: Exemplos:
