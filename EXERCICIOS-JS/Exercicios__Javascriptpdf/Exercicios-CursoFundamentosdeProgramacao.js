@@ -159,6 +159,23 @@ multiplicar(5, 5) // retornará 25
 multiplicar(0, 7) // retornará 0
 */
 
+function multiplicaInteiro(numero1, numero2) {
+    if (numero1 >= 0 && numero2 >= 0) {
+         let resultado = 0;
+        const vezes = numero2;
+        
+        for (let i = 0; i < vezes; i++) {
+            resultado += numero1;
+        }
+        return resultado;
+    } else {
+        return "Numeros não são positivos, por favor insira números maiores ou iguais a zero";
+    }
+};
+
+console.log(multiplicaInteiro(10, 50));
+console.log(multiplicaInteiro(5, 5));
+console.log(multiplicaInteiro(0, 7));
 
 
 /*09) Escreva uma função que receba dois parâmetros. O primeiro parâmetro é o elemento que repetirá, enquanto que o segundo será o número de vezes que haverá repetição. Um array será retornado.
