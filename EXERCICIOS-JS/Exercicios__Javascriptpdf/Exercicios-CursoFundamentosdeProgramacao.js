@@ -313,7 +313,13 @@ somarNumeros([10, 10, 10]) // retornará 30
 somarNumeros([15, 15, 15, 15]) // retornará 60
 */
 
+function somarNumeros(numeros) {
+    return numeros.reduce((acc, num) => acc + num, 0);
+}
 
+console.log(somarNumeros([10, 10, 10]));
+console.log(somarNumeros([15, 15, 15, 15]));
+console.log(somarNumeros([15, 25, 80, 100]));
 
 /*18) Você está trabalhando numa aplicação pessoal de controle de despesas. Na tela principal dessa aplicação, é possível adicionar produtos ou serviços, informando nome, categoria e preço. Uma funcionalidade que você está desenvolvendo no momento é a de somar o total das despesas.
 Crie uma função que receba um array de produtos e retorne o total das despesas. 
