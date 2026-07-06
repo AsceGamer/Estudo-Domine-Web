@@ -300,7 +300,12 @@ checarAnoBissexto(2020) // retornará true
 checarAnoBissexto(2100) // retornará false, pois é múltiplo de 100 e não é múltiplo de 400
 */
 
+function checarAnoBissexto(ano) {
+    return (ano % 4 === 0 && ano % 100 !== 0) || (ano % 400 === 0);
+}
 
+console.log(checarAnoBissexto(2020));
+console.log(checarAnoBissexto(2100));
 
 /*17) Escreva uma função que receba um array de números e retornará a soma de todos os números desse array. 
 Exemplos:
