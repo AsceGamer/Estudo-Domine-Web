@@ -217,12 +217,17 @@ console.log(repetirString(2));
 console.log(repetirString(0));
 
 /*11) Crie uma função que receba uma array e retorne o primeiro e o último elemento desse array como um novo
-array: Exemplos:
+array: 
+Exemplos:
 receberPrimeiroEUltimoElemento([7,14,"olá"]) // retornará [7, "olá"] 
 // receberPrimeiroEUltimoElemento([-100, "aplicativo", 16]) // retornará [-100, 16]
 */
 
+function receberPrimeiroEUltimoElemento(array) {
+    return [array[0], array[array.length - 1]];
+};
 
+console.log(receberPrimeiroEUltimoElemento([7,14,"olá"]));
 
 /*12) Quando temos um objeto e manipulamos seus atributos, adicionando, atualizando ou removendo-os, estamos apenas modificando-o, mas, em essência, o objeto continua o mesmo, ou seja a sua referência de memória é a mesma.
 Num projeto que você está trabalhando, você foi designado a refatorar diversas funções para que façam cópias de objetos e manipulem os dados dessas cópias, com o intuito de evitar efeitos indesejáveis em algumas situações devido a referências a objetos. Abaixo, está a descrição de uma dessas funções.
@@ -252,7 +257,12 @@ filtrarNumeros(["Javascript", 1, "3", "Web", 20]) // retornará [1, 20]
 // filtrarNumeros(["a", "c"]) // retornará []
 */
 
+function filtrarNumeros(array) {
+    return array.filter(element => typeof element === "number");
+}
 
+console.log(filtrarNumeros(["Javascript", 1, "3", "Web", 20]));
+console.log(filtrarNumeros(["a", "c"]));
 
 /*14) Desenvolva uma função que recebe como parâmetro um objeto e retorne um array de arrays, em que cada elemento é um array formado pelos pares chave/valor que corresponde a um atributo do objeto. Observe os exemplos abaixo para um melhor entendimento:
 Exemplos:
