@@ -285,7 +285,12 @@ receberSomenteOsParesDeIndicesPares([1, 2, 3, 4]) // retornará []
 receberSomenteOsParesDeIndicesPares([10, 70, 22, 43]) // retornará [10, 22]
 */
 
+function receberSomenteOsParesDeIndicesPares(array) {
+    return array.filter((element, index) => typeof element === "number" && element % 2 === 0 && index % 2 === 0);
+}
 
+console.log(receberSomenteOsParesDeIndicesPares([1, 2, 3, 4]));
+console.log(receberSomenteOsParesDeIndicesPares([10, 70, 22, 43]));
 
 /*16) A fim de manter o calendário anual ajustado com o movimento de translação da Terra, criou-se os anos bissextos, que têm 366 dias em vez dos 365 presentes nos anos normais.
 Para determinar se um ano é bissexto, é necessário saber se ele é multiplo de 4. Não pode ser múltiplo de 100, exceto se for também múltiplo de 400.
