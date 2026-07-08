@@ -335,6 +335,19 @@ despesasTotais([
 ]) // retornará 34599.89
 */
 
+function despesasTotais(array) {
+    return array.reduce((acc, despesa) => acc + despesa.preco, 0);
+}
+
+console.log(despesasTotais([
+    {nome: "Jornal online", categoria: "Informação", preco: 89.99},
+    {nome: "Cinema", categoria: "Entretenimento", preco: 150}
+]));
+
+console.log(despesasTotais([
+    {nome: "Galaxy S20", categoria: "Eletrônicos", preco: 3599.99},
+    {nome: "Macbook Pro", categoria: "Eletrônicos", preco: 30999.90}
+]));
 
 
 /*19) Numa aplicação Web de investimento financeiro da qual você faz parte da equipe de desenvolvimento, pretende-se adicionar a funcionalidade de calcular a média de um conjunto de números informados pelo usuário.
