@@ -429,7 +429,17 @@ contarPalavras("Sou uma frase") // retornará 3
 contarPalavras("Me divirto aprendendo a programar") // retornará 5
 */
 
+function contarPalavras(texto) {
+    // Transforma a string em um array de palavras separadas por espaço
+    const palavras = texto.split(' ');
 
+    // Retorna a quantidade de itens no array
+    return palavras.length;
+}
+
+console.log(contarPalavras("Sou uma frase"));
+console.log(contarPalavras("Me divirto aprendendo a programar"));
+console.log(contarPalavras("O JavaScript é muito legal"));
 
 /*24) Desenvolva uma função que recebe um caractere e uma string como parâmetros e retorne a quantidade de vezes que o caractere se repete na string. A função deverá ser case-sensitive, ou seja, irá diferenciar maiúsculas de minúsculas.
 Exemplos:
