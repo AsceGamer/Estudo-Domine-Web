@@ -443,12 +443,19 @@ console.log(contarPalavras("O JavaScript é muito legal"));
 
 /*24) Desenvolva uma função que recebe um caractere e uma string como parâmetros e retorne a quantidade de vezes que o caractere se repete na string. A função deverá ser case-sensitive, ou seja, irá diferenciar maiúsculas de minúsculas.
 Exemplos:
-contarCaractere("r", "A sorte favorece os audazes") 
-// retornará 2 contarCaractere("c", "Conhece-te a ti mesmo") 
-// retornará 1
+contarCaractere("r", "A sorte favorece os audazes") // retornará 2 
+contarCaractere("c", "Conhece-te a ti mesmo") // retornará 1
 */
 
+function contarCaractere(caractere, string) {
+    // Corta a string onde encontrar o caractere e conta os pedaços
+    return string.split(caractere).length - 1;
+}
 
+console.log(contarCaractere("r", "A sorte favorece os audazes"));
+console.log(contarCaractere("c", "Conhece-te a ti mesmo"));
+console.log(contarCaractere("a", "O JavaScript é sensacional"));
+console.log(contarCaractere("A", "Banana"));
 
 /*25) A fim de criar um mecanismo de busca para sua aplicação, você precisa iniciar criando uma função para identificar palavras semelhantes.
 Escreva uma função que recebe como primeiro parâmetro uma palavra e, como segundo parâmetro, um array
