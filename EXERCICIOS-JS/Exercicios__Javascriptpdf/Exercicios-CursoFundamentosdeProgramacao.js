@@ -461,11 +461,19 @@ console.log(contarCaractere("A", "Banana"));
 Escreva uma função que recebe como primeiro parâmetro uma palavra e, como segundo parâmetro, um array
 de strings. A função deverá filtrar as palavras do array que contêm nelas a string do primeiro parâmetro. 
 Exemplos:
-buscarPalavrasSemelhantes("pro", ["programação", "mobile", "profissional"]) 
-// retornará ["programação", "profissional"] buscarPalavrasSemelhantes("python", ["javascript", "java", "c++"]) // retornará []
+buscarPalavrasSemelhantes("pro", ["programação", "mobile", "profissional"]) // retornará ["programação", "profissional"] 
+buscarPalavrasSemelhantes("python", ["javascript", "java", "c++"]) // retornará []
 */
 
+function buscarPalavrasSemelhantes(termoBusca, listaPalavras) {
+    return listaPalavras.filter(palavra => palavra.includes(termoBusca));
+};
 
+const palavras = ["programação", "computador", "programa", "javascript", "projeto", "mobile", "profissional", "java", "c++"];
+
+console.log(buscarPalavrasSemelhantes("pro", palavras)); 
+
+console.log(buscarPalavrasSemelhantes("java", palavras));
 
 /*26) Desenvolva uma função que receba uma string como parâmetro e retorne essa string somente com as consoantes, ou seja, sem as vogais.
 Exemplos:
