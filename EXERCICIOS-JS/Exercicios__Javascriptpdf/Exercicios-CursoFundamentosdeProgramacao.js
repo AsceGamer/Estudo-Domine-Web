@@ -550,6 +550,24 @@ segundoMaior([12, 16, 1, 5]) // retornará 12
 segundoMaior([8, 4, 5, 6]) // retornará 6
 */
 
+function segundoMaior(array) {
+    if (array.length < 2) {
+        return "O array precisa ter pelo menos 2 números.";
+    };
+    // 1. Remove duplicados usando o 'Set' e transforma de volta em array
+    const numerosUnicos = [...new Set(array)];
+
+    // 2. Ordena os números do maior para o menor (ordem decrescente)
+    numerosUnicos.sort((a, b) => b - a);
+
+    // 3. Retorna o segundo elemento (índice 1)
+    return numerosUnicos[1];
+}
+
+console.log(segundoMaior([12, 1, 35, 8, 35, 7])); 
+console.log(segundoMaior([10, 5, 20, 20, 15]));
+console.log(segundoMaior([12, 16, 1, 5]));
+console.log(segundoMaior([8, 4, 5, 6]));
 
 
 /*30) Elabore uma função que recebe um objeto com estudantes e suas notas. As notas de cada estudante estarão num array, conforme exemplo abaixo. Você deverá calcular a média da nota de cada aluno e retornar um objeto com os atributos nome e media, que indica o aluno que teve o melhor desempenho nas notas.
