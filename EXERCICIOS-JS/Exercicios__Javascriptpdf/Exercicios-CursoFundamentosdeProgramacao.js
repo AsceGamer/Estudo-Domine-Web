@@ -490,12 +490,36 @@ console.log(removerVogais("Oi, meu nome e Gemini"));
 console.log(removerVogais("Cod3r"));
 console.log(removerVogais("Fundamentos"));
 
+/*
+function removerVogaisComFilter(texto) {
+    const vogais = "aeiouAEIOUáéíóúÁÉÍÓÚàèìòùÀÈÌÒÙâêîôûÂÊÎÔÛãõÃÕ";
+    
+    return texto
+        .split('') // Transforma o texto em um array de letras
+        .filter(letra => !vogais.includes(letra)) // Mantém só o que NÃO for vogal
+        .join(''); // Junta as letras de volta em uma string
+}
+
+console.log(removerVogaisComFilter("Programacao"));
+*/
+
 /*27) Desenvolva uma função que recebe um objeto como parâmetro e retorne um outro objeto que corresponde ao ao objeto recebido como parâmetro, porém com as posições das chaves e valores invertidas, conforme exemplo a seguir:
 Exemplo:
 inverter({ a: 1, b: 2, c: 3}) // retornará { 1: "a", 2: "b", 3: "c"}
 */
 
+function inverter(objeto) {
+    // 1. Transforma o objeto em um array de [chave, valor]
+    const entradas = Object.entries(objeto);
+    
+    // 2. Inverte a ordem de cada par para [valor, chave]
+    const entradasInvertidas = entradas.map(([chave, valor]) => [valor, chave]);
+    
+    // 3. Transforma o array invertido de volta em um objeto
+    return Object.fromEntries(entradasInvertidas);
+}
 
+console.log(inverter({ a: 1, b: 2, c: 3})); 
 
 /*28) Elabore uma função que recebe dois parâmetros: o primeiro é um array de números e o segundo é um número que especifica uma quantidade de dígitos. Essa função deverá retornar somente aqueles números do array que têm a quantidade de dígitos indicada pelo segundo parâmetro.
 Exemplos:
