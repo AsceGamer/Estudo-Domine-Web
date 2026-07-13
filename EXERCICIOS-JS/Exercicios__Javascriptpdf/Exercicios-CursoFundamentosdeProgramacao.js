@@ -477,10 +477,18 @@ console.log(buscarPalavrasSemelhantes("java", palavras));
 
 /*26) Desenvolva uma função que receba uma string como parâmetro e retorne essa string somente com as consoantes, ou seja, sem as vogais.
 Exemplos:
-removerVogais("Cod3r") // retornará "Cd3r" removerVogais("Fundamentos") // retornará "Fndmnts"
+removerVogais("Cod3r") // retornará "Cd3r" 
+removerVogais("Fundamentos") // retornará "Fndmnts"
 */
 
+function removerVogais(texto) {
+    return texto.replace(/[aeiouà-ú]/gi, '');
+}
 
+console.log(removerVogais("JavaScript"));
+console.log(removerVogais("Oi, meu nome e Gemini"));
+console.log(removerVogais("Cod3r"));
+console.log(removerVogais("Fundamentos"));
 
 /*27) Desenvolva uma função que recebe um objeto como parâmetro e retorne um outro objeto que corresponde ao ao objeto recebido como parâmetro, porém com as posições das chaves e valores invertidas, conforme exemplo a seguir:
 Exemplo:
