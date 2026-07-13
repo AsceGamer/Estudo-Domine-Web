@@ -578,3 +578,25 @@ recerberMelhorEstudante({
     Carla: [7, 7, 8, 9] // média 7.75
 }) // retornará { nome: "Mariana", media: 7.875 }
 */
+
+function recerberMelhorEstudante(estudantes) {
+    let melhorEstudante = "";
+    let melhorMedia = 0;
+
+    for (const [nome, notas] of Object.entries(estudantes)) {
+        const media = notas.reduce((acumulador, nota) => acumulador + nota, 0) / notas.length;
+
+        if (media > melhorMedia) {
+            melhorMedia = media;
+            melhorEstudante = { nome, media };
+        }
+    }
+
+    return melhorEstudante;
+};
+
+console.log(recerberMelhorEstudante({
+    Joao: [8, 7.6, 8.9, 6],
+    Mariana: [9, 6.6, 7.9, 8], 
+    Carla: [7, 7, 8, 9] 
+}));
