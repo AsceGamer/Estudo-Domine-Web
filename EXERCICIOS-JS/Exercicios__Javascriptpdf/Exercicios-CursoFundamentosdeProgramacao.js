@@ -527,6 +527,21 @@ filtrarPorQuantidadeDeDigitos([38, 2, 365, 10, 125, 11], 2) // retornará [38, 1
 filtrarPorQuantidadeDeDigitos([5, 9, 1, 125, 11], 1) // retornará [5, 9, 1]
 */
 
+function filtrarPorQuantidadeDeDigitos(array, quantidadeDigitos) {
+    return array.filter(numero => {
+        const apenasNumeros = Math.abs(numero).toString();
+        return apenasNumeros.length === quantidadeDigitos;
+    });
+}
+
+console.log(filtrarPorQuantidadeDeDigitos([5, -25, 33, 456, -99], 2));
+console.log(filtrarPorQuantidadeDeDigitos([38, 2, 365, 10, 125, 11], 2));
+console.log(filtrarPorQuantidadeDeDigitos([5, 9, 1, 125, 11], 1));
+
+/*
+const filtrarPorDigitos = (arr, qtd) => arr.filter(n => Math.abs(n).toString().length === qtd);
+console.log(filtrarPorDigitos([5, -25, 33, 456, -99], 2));
+*/
 
 
 /*29) Crie uma função que recebe um array de números e retorna o segundo maior número presente nesse array. 
