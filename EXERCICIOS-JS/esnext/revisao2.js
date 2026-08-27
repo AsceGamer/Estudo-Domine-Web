@@ -9,7 +9,7 @@ lexico1();
 lexico2();
 
 // parametro default
-function log(texto = 'Node') {
+function log(texto = 'Node') {   // valor texto se eu não passar nenhum parametro, ele vai assumir o valor 'Node'
     console.log(texto);
 };
 
